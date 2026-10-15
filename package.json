@@ -14,6 +14,12 @@
     "lint": "pnpm -r --if-present lint",
     "typecheck": "pnpm -r --if-present typecheck",
     "test": "pnpm -r --if-present run test --runInBand",
-    "pods": "cd apps/mobile && bundle install && cd ios && bundle exec pod install"
+    "pods": "cd apps/mobile && bundle install && cd ios && bundle exec pod install",
+    "test:native": "sh scripts/test-native.sh",
+    "check:ios": "sh scripts/check-ios-module.sh",
+    "macos": "pnpm --filter @icloud-sync/macos macos",
+    "start:macos": "pnpm --filter @icloud-sync/macos start",
+    "pods:macos": "cd apps/macos && bundle install && cd macos && bundle exec pod install",
+    "check:macos": "sh scripts/check-macos-module.sh"
   }
 }
