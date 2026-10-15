@@ -1,0 +1,20 @@
+# Resolve from this app so the mobile app can use its own RN version.
+react_native_path = File.dirname(Pod::Executable.execute_command('node', ['-p',
+  'require.resolve("react-native-macos/package.json", {paths: [process.argv[1]]})', __dir__]).strip)
+require "#{react_native_path}/scripts/react_native_pods.rb"
+
+react_native_path = Pathname.new(react_native_path).relative_path_from(Pathname.new(__dir__)).to_s
+
+prepare_react_native_project!
+platform :macos, '14.0'
+
+target 'ICloudSyncMac-macOS' do
+  use_native_modules!
+  use_react_native!(
+    :path => react_native_path,
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+  post_install do |installer|
+    react_native_post_install(installer, react_native_path)
+  end
+end
