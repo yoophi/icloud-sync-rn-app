@@ -1,0 +1,19 @@
+{
+  "name": "icloud-sync-rn-app",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@9.15.5",
+  "engines": {
+    "node": ">=22.11.0",
+    "pnpm": ">=9 <10"
+  },
+  "scripts": {
+    "start": "pnpm --filter @icloud-sync/mobile start",
+    "ios": "pnpm --filter @icloud-sync/mobile ios",
+    "android": "pnpm --filter @icloud-sync/mobile android",
+    "lint": "pnpm -r --if-present lint",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm -r --if-present run test --runInBand",
+    "pods": "cd apps/mobile && bundle install && cd ios && bundle exec pod install"
+  }
+}

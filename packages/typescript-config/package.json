@@ -1,0 +1,9 @@
+{
+  "name": "@icloud-sync/typescript-config",
+  "version": "0.0.1",
+  "private": true,
+  "files": ["react-native.json"],
+  "dependencies": {
+    "@react-native/typescript-config": "0.87.1"
+  }
+}
